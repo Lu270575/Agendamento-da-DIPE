@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento DIPE - Sistema de Atendimento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 font-inter">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-8 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">
+                <i class="fas fa-calendar-check mr-3"></i>
+                Agende seu Atendimento com a DIPE
+            </h1>
+            <p class="text-blue-100 text-lg md:text-xl">
+                Escolha o profissional, dia da semana e horário que melhor se adequa à sua necessidade.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Formulário de Agendamento -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-user-md text-blue-600 mr-3"></i>
+                    Novo Agendamento
+                </h2>
+
+                <form id="agendamentoForm" class="space-y-6">
+                    <!-- Professora -->
+                    <div>
+                        <label for="professora" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-chalkboard-teacher mr-2"></i>Professora *
+                        </label>
+                        <select id="professora" name="professora" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Selecione uma professora</option>
+                            <option value="luciana">Professora Luciana</option>
+                            <option value="arice">Professora Arice</option>
+                            <option value="silvana">Professora Silvana</option>
+                        </select>
+                    </div>
+
+                    <!-- Dia da Semana -->
+                    <div>
+                        <label for="diaSemana" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-calendar mr-2"></i>Dia da Semana *
+                        </label>
+                        <select id="diaSemana" name="diaSemana" required disabled
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100">
+                            <option value="">Primeiro selecione uma professora</option>
+                        </select>
+                    </div>
+
+                    <!-- Horário -->
+                    <div>
+                        <label for="horario" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-clock mr-2"></i>Horário *
+                        </label>
+                        <select id="horario" name="horario" required disabled
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100">
+                            <option value="">Primeiro selecione o dia</option>
+                        </select>
+                    </div>
+
+                    <!-- Data -->
+                    <div>
+                        <label for="data" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-calendar-alt mr-2"></i>Data *
+                        </label>
+                        <input type="date" id="data" name="data" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Vínculo -->
+                    <div>
+                        <label for="vinculo" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-id-badge mr-2"></i>Vínculo *
+                        </label>
+                        <select id="vinculo" name="vinculo" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Selecione seu vínculo</option>
+                            <option value="aluno-apmt">Aluno da APMT</option>
+                            <option value="instrutor-apmt">Instrutor da APMT</option>
+                            <option value="nao-se-aplica">Não se aplica</option>
+                        </select>
+                    </div>
+
+                    <!-- Modalidade de Atendimento -->
+                    <div>
+                        <label for="modalidade" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-desktop mr-2"></i>Modalidade de Atendimento *
+                        </label>
+                        <select id="modalidade" name="modalidade" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            <option value="">Selecione a modalidade</option>
+                            <option value="presencial">
+                                <i class="fas fa-building"></i> Presencial
+                            </option>
+                            <option value="online">
+                                <i class="fas fa-video"></i> Online
+                            </option>
+                        </select>
+                        <p class="text-sm text-gray-500 mt-1">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Presencial: Atendimento no local da DIPE | Online: Atendimento por videoconferência
+                        </p>
+                    </div>
+
+                    <!-- Dados Pessoais -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="nome" class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-user mr-2"></i>Nome Completo *
+                            </label>
+                            <input type="text" id="nome" name="nome" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="telefone" class="block text-sm font-medium text-gray-700 mb-2">
+                                <i class="fas fa-phone mr-2"></i>Telefone *
+                            </label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-envelope mr-2"></i>E-mail *
+                        </label>
+                        <input type="email" id="email" name="email" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Observações -->
+                    <div>
+                        <label for="observacoes" class="block text-sm font-medium text-gray-700 mb-2">
+                            <i class="fas fa-comment mr-2"></i>Observações
+                        </label>
+                        <textarea id="observacoes" name="observacoes" rows="3"
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                  placeholder="Informações adicionais sobre o agendamento"></textarea>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button type="submit" id="btnAgendar"
+                                class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-check mr-2"></i>
+                            <span>Confirmar Agendamento</span>
+                        </button>
+                        <button type="button" id="btnLimpar"
+                                class="flex-1 bg-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-times mr-2"></i>
+                            Limpar Formulário
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Debug Info (removível em produção) -->
+            <div id="debugInfo" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8" style="display: none;">
+                <h3 class="text-yellow-800 font-semibold mb-2">Debug Information:</h3>
+                <div id="debugContent" class="text-yellow-700 font-mono text-sm"></div>
+            </div>
+
+            <!-- Agendamentos Recentes -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-list text-blue-600 mr-3"></i>
+                    Agendamentos Recentes
+                </h2>
+                <div id="agendamentosRecentes" class="space-y-4">
+                    <p class="text-gray-500 text-center py-8">Nenhum agendamento encontrado.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Confirmação -->
+    <div id="modalConfirmacao" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4">
+            <div class="text-center">
+                <div class="mb-4">
+                    <i class="fas fa-check-circle text-green-500 text-5xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Agendamento Confirmado!</h3>
+                <p class="text-gray-600 mb-6">Seu agendamento foi registrado com sucesso.</p>
+                <button id="btnFecharModal"
+                        class="bg-blue-600 text-white py-2 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+        <div class="bg-white rounded-lg p-8">
+            <div class="text-center">
+                <i class="fas fa-spinner fa-spin text-blue-600 text-3xl mb-4"></i>
+                <p class="text-gray-700">Processando agendamento...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
